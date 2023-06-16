@@ -1,0 +1,60 @@
+{% extends './base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron text-success">
+            <h1 class="mb-1">のりこファーム</h1>
+            <p class="text-primary font-weitht-bold ml-3">with Rookie-Shinichi</p>
+        </div>
+        <div class="col-md-8 m-2">     
+            <h4 class="mt-2">植栽リスト</h4>
+            <form method="GET">
+            {% csrf_token %}
+            <div class="row">
+                {% for field in search_form.visible_fields %}                
+                    <div class="form-group col-3">
+                        {{ field.errors }}
+                        {{ field.label }}
+                        {{ field }}
+                        {{ field.help_text }}
+                    </div>
+                {% endfor %}                
+            </div> 
+            <button type="submit" class="btn btn-primary mb-3">検索</button>
+        </form>
+        {% for plantImage in plantImages %}
+            <div id= "plantImage" class="my-2" style="background-color:darkkhaki">
+                {% if plantImage.image %}
+                    <img src="{{ plantImage.image.url }}">
+                {% endif %}
+                <p class="my-2"><a href="{% url 'plants:image_update' plantImage.pk %}">{{ plantImage.name }}</a></p>
+                {% if plantImage.edit_url %}
+                    <a href="{{ plantImage.edit_url }}">編集</a>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No Plants.</p>
+        {% endfor %}
+        <nav class="container mt-2">
+            <ul class="pagination mt-2">
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link" href="{{ paginate_root_url }}&page={{ page_obj.previous_page_number }}">前へ</a></li>
+                {% endif %}
+                        
+                {% for i in page_obj.paginator.page_range %}
+                    {% if page_obj.number == i %}
+                        <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link" href="{{ paginate_root_url }}&page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="{{ paginate_root_url }}&page={{ page_obj.next_page_number }}">次へ</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <p class="text-right mr-1"><a href="{% url 'plants:image_add' %}">アップロード</a></p>
+        </div>
+    </div>
+{% endblock %}

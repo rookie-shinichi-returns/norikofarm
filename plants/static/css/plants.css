@@ -1,0 +1,24 @@
+#image-preview {
+    max-width: 75%;
+    height: auto;
+    background-color:beige;
+}
+
+.jumbotron {
+    background:url(../img/photo2.jpg);
+}
+
+.card-body h5 img {
+    width: 100%;
+    height: auto;
+    margin: 10px;
+}
+
+.card-body .button img {
+    border-radius: 600px;
+    height: 90px;
+    margin: 10px;
+    width: 90px;
+}
+
+
