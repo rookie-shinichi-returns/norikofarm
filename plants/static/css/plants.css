@@ -4,10 +4,6 @@
     background-color:beige;
 }
 
-.jumbotron {
-    background:url(../img/photo2.jpg);
-}
-
 .card-body h5 img {
     width: 100%;
     height: auto;
