@@ -1,21 +1,14 @@
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 from .forms import PlantForm
-from .models import Plant
+from .models import Plant, Category
 from django import forms
 
 
 class PlantSearchForm(forms.Form):
     category = forms.fields.ChoiceField(
         label = 'カテゴリー',
-        choices = (
-            ('rose', 'バラ'),
-            ('decorativeplant', '観葉植物'),
-            ('orchid', 'ラン'),
-            ('fruittree', '果樹'),
-            ('vegetable', '野菜'),
-            ('others', 'その他'),
-        ),
+        choices = (),
         required = False,
         widget = forms.widgets.Select
     )
@@ -35,6 +28,11 @@ class PlantSearchForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(PlantSearchForm, self).__init__(*args, **kwargs)
+        # カテゴリーの選択肢を設定モデルから取得する
+        self.fields['category'].choices = Category.objects.all().values_list('slug', 'name')
+        # 0番目の未設定の選択肢を挿入
+        self.fields['category'].choices.insert(0, ('', '未設定'))
+        
         for field in self.fields.values():
             field.widget.attrs["class"] = "form-control"
 

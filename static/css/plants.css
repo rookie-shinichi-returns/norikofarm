@@ -4,10 +4,6 @@
     background-color:darkgray;
 }
 
-.jumbotron {
-    background:url(../img/photo2.jpg);
-}
-
 #plantImage img {
     max-width: 100%;
     height: auto;
