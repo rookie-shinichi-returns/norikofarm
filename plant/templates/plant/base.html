@@ -1,0 +1,43 @@
+{% load static %}
+
+<!doctype html>
+
+<html>
+<head>
+    <title>NorikoFarm</title>
+    <meta charset="utf-8">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="{% static 'img\farm-photo.jpeg' %}">
+            <p><a href="{% url 'plant:index' %}">のりこファーム</a></p>
+            <img src="{% static 'img\norikofarm_line_l.png' %}" class="norikofarm-line">
+            <div class="header-menu">
+                <a href="{% url 'plant:plants_new' %}">新規</a>
+                <a href="{% url 'plant:signup' %}">サインアップ</a>
+                {% if request.user.is_authenticated %}
+                    <form action="{% url 'plant:logout' %}" method="post">{% csrf_token %}
+                        <button type="submit">ログアウト</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'plant:login' %}">ログイン</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    <div class="container">        
+        {% for message in messages %}
+            <p class="message-success">{{ message }}</p>
+        {% endfor %}
+        {% block content %}{% endblock %}
+    </div>
+    <!-- jsファイル差し込みブロック -->
+    {% block extrajs %}{% endblock %}
+</body>
+</html>
+

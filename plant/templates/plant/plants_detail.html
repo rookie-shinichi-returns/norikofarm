@@ -1,0 +1,39 @@
+{% extends 'plant\base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="detail-container">
+    <div class="plant-info">
+        <img src="{{ plant.image.url }}" class="plant-img">
+        <a href="{% url 'plant:users_detail' plant.user.id %}" class="plantUser">
+            ユーザー {{ plant.user }}
+        </a>
+        <h3>{{ plant.name }}（{{ plant.species }}） </h3><a href="{% url 'plant:plants_edit' plant.id %}" id="editBtn">編集</a>
+    </div>        
+        <button id="toggleBtn">フォームの表示／非表示</button>
+        <div id="formContent">
+        <form action="{% url 'plant:plants_detail' plant.id %}" method="post">{% csrf_token %}
+            {% for field in form %}
+            <p>
+                {{ field.label_tag }} {{ field }}
+                {% for error in field.errors %}
+                <p style="color: red;">{{ error }}</p>
+                {% endfor %}
+            </p>
+            {% endfor %}
+            <button class="btn" type="submit">保存</button>                
+        </form>
+        </div>
+    {% if request.user == plant.user %}
+        <form style="display: flex; justify-content: flex-end;" action="{% url 'plant:plants_delete' plant.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn" onclick='return confirm("本当に削除しますか?");'>削除</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extrajs%}
+<script src="{% static 'js\app.js' %}"></script>
+{% endblock %}

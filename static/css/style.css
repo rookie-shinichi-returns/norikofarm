@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration:none;
+    color: #000;
+}
+
+p {
+    margin: 10px;
+}
+
+
+input, select, textarea {
+  font-family: sans-serif; /* または利用するフォント */
+  font-size: 80%;        /* 親要素の100%にする */
+}
+
+header {
+    height: 300px;
+}
+
+.header-menu {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+}
+
+.header-menu a {
+    background: white;
+    font-size: 14px;
+    font-family: fantasy;
+    line-height: 1;
+    padding: 5px;
+    margin: 5px;
+}
+
+.header-container {
+    position: relative;
+    width: 90%;
+    margin: auto;
+   /* overflow: auto; */
+}
+
+.header-container p a {
+    position: absolute; /* 絶対位置 */
+    color: white;
+    top: 15px;
+    left: 15px;
+    margin: 0;
+    background: #9387eb;
+    font-size: 18px;
+    font-family: fantasy;
+    line-height: 1;
+    padding: 5px 10px;    
+}
+
+.header-container img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.header-container .norikofarm-line {
+    position: absolute;
+    top: 15px;
+    left: 170px;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.form-container {
+    width: 90%;
+    margin: 40px;
+    padding: 10px;
+    background-color: hsl(177, 70%, 80%);
+}
+
+.form-container label {
+    vertical-align: top;
+}
+
+.form-container a, button {
+    margin: 10px;
+    color: rgb(25, 0, 255);
+}
+
+.login-container, .signup-container {
+    width: 90%;
+    margin: 40px;
+    padding: 10px;
+    background-color: hsl(177, 70%, 80%);
+}
+
+header h1 {
+    margin: 0;
+    height: 100%;
+    line-height: 70px;
+}
+
+.header-menu {
+    display: flex;
+    align-items: center;
+}
+
+.plant-container {
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: flex-start;    
+    width: 90%;
+    margin: auto;
+}
+
+.plant {
+    width: calc(100%/3);
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.plant-info {
+    margin: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color:chocolate;
+    position: relative;
+    text-align:left;
+}
+
+.plant-info .plantUser {
+    position: absolute;
+    color: pink;
+    font-weight: bold;
+    font-size: 1em;
+    top: 2%;
+    left: 5%;
+}
+
+.plant-info a:hover {
+    text-decoration: underline;
+}
+
+.plant-img {
+    width: 100%;
+    max-width: 500px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.plant-img:hover {
+    opacity: 0.8;
+}
+
+.detail-container {
+    width: 70%;
+    margin: 5%;
+    padding: 10% 10% 5% 10%;
+    background-color: darkgray;
+}
+
+.detail-container .btn {
+    padding: 5px;
+}
+
+.detail-container h3 {
+    display: inline-block;
+}
+
+#editBtn {
+     border: 1px solid rgb(135, 233, 122);
+     text-decoration: none;
+     background-color: rgb(135, 233, 122);
+     padding: 3px;
+}
+
+.users-container {
+    width: 90%;
+    margin: 30px;
+    padding: 20px;
+    background-color: darkgray;
+}
+
+.edit-container label {
+    vertical-align: top;
+}
+
+.edit-container {
+    width: 80%;
+    margin-top: 20px;
+    margin-left: 50px; 
+    padding: 20px;
+    background-color: rgb(240, 241, 255);    
+}
+
+.edit-form {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.edit-form p {
+    padding-top: 10px;    
+}
+
+.detail-container .plant-img:hover {
+    opacity: 0.8;
+    border-radius: 4px;
+}
+
+.detail-container label {
+    vertical-align: top;
+}
+
+@media (max-width: 768px) {
+    .detail-container .setting {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }       
+}
+
+.setting input, .setting textarea {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 200px;
+    margin: 5px;
+    border: 1 solid #000;
+}
+
+textarea {
+    padding: 10px;
+    font-size: 16px;
+}
+
+#formContent {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+#toggleBtn {
+    background-color: rgb(135, 233, 122);
+    color:black;
+    border-color: rgb(135, 233, 122);
+    padding: 3px;
+}

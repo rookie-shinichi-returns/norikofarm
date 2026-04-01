@@ -1,0 +1,36 @@
+{% extends 'plant\base.html' %}
+
+{% block content %}
+
+<div class="login-container">
+    <h3 style="color:darkblue;">ログイン</h3>
+    <form method="post">
+        {% csrf_token %}    
+        {{ form.non_field_errors }}
+        {% for field in form %}
+        <p>
+            {{ field.label_tag }} {{ field }}
+            {% for error in field.errors %}
+                <p style="color: red;">{{ error }}</p>
+            {% endfor %}
+        </p>
+        {% endfor %}
+        <input type="submit" value="ログイン">
+<!--
+    {% if form.errors %}
+        <p>ユーザー名かパスワードが誤っています！</p>
+    {% else %}
+        <h2>ログイン</h2>
+        <label>メールアドレス</label>
+        <input name="username">
+        <br>
+        <label>パスワード</label>
+        <input type="password" name="password">
+        <br>
+        <input type="submit" value="ログイン">
+    {% endif %}
+-->
+    </form>
+</div>
+
+{% endblock %}

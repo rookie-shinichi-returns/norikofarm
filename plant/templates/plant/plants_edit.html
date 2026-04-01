@@ -1,0 +1,18 @@
+{% extends 'plant\base.html' %}
+
+{% block content %}
+
+<div class="edit-container">
+    <h3 style="text-align: left;color: rgb(68, 205, 50);">編集</h3>
+    <img src="{{ plant.image.url }}" alt="花の画像" class="plant-img">
+    <div class="edit-form">
+        <form action="{% url 'plant:plants_edit' plant.pk %}" method="post">{% csrf_token %}
+            <p>{{ form.name.label_tag }} {{ form.name }}</p>
+            <p>{{ form.species.label_tag }} {{ form.species }}</p>
+            <p>{{ form.description.label_tag }} {{ form.description }}</p>
+            <p><button class="btn" type="submit">保存</button></p>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

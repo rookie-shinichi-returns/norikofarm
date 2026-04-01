@@ -1,0 +1,13 @@
+-{% extends 'plant\base.html' %}
+
+{% block content %}
+
+<div class="users-container">
+    <h3 style="color:rgb(120, 42, 165);" class="user-name">{{ user.email }}</h2>
+    <!-- plants_list.htmlを読み込んで写真一覧を表示する -->
+    {% include 'plant\plants_list.html' %}
+</div>
+
+{% endblock %}
+
+
