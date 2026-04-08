@@ -22,7 +22,7 @@
                 <a href="{% url 'plant:signup' %}">サインアップ</a>
                 {% if request.user.is_authenticated %}
                     <form action="{% url 'plant:logout' %}" method="post">{% csrf_token %}
-                        <button type="submit">ログアウト</button>
+                        <button type="submit" class="btn-responsive">ログアウト</button>
                     </form>
                 {% else %}
                     <a href="{% url 'plant:login' %}">ログイン</a>
