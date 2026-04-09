@@ -261,14 +261,22 @@ textarea {
 }
 
 .btn-responsive {
-    /* 文字サイズ：最小１６ｐｘ（入力エラー防止）*/
+    /* 文字サイズ：最小１６ｐｘ（入力エラー防止）
     font-size: clamp(1rem, 2.5vw, 1.5rem);
 
-    /* 上下余白：最小１２ｐｘ、最大１８ｐｘ */
+     上下余白：最小１２ｐｘ、最大１８ｐｘ 
     padding-top: clamp(0.75rem, 0.5vw, 1.25rem);
     padding-bottom: clamp(0.75rem, 0.6vw, 1.25rem);
 
-    /* 左右余白：最小２４ｐｘ、最大４８ｐｘ（画面が）広いほど横長に */ 
+     左右余白：最小２４ｐｘ、最大４８ｐｘ（画面が）広いほど横長に 
     padding-left: clamp(0.75rem, 0.5vw, 1.25rem);
-    padding-right: clamp(0.75rem, 0.6vw, 1.25rem);    
+    padding-right: clamp(0.75rem, 0.6vw, 1.25rem);
+    */
+    font-size: clamp(16px, 2vw + 10px, 24px);
+    padding: clamp(10px, 2vh, 20px);
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;    
 }
