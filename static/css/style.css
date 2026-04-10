@@ -305,7 +305,9 @@ textarea {
     border: none;
     border-radius: 8px;
     text-align: center;
+}
 
-
-
+.large-input {
+    width: 90px;
+    height: 25px;
 }

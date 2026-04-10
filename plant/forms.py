@@ -25,10 +25,11 @@ class PlantWork(ModelForm):
         model = Work
         fields = ['work_type', 'default_interval_days', 'performed_at', 'notes']
         widgets = {
-            'work_type': forms.Select(attrs={'value': '選択してください'}),
-            'default_interval_days': forms.NumberInput(attrs={'style': 'width: 20%;'}),
+            'work_type': forms.Select(attrs={'class': 'large-input'}),
+            # 'work_type': forms.Select(attrs={'value': '選択してください'}),
+            'default_interval_days': forms.NumberInput(attrs={'class': 'large-input'}),
             'notes': forms.Textarea(attrs={'rows': 0, 'cols': 30}) ,
-            'performed_at': forms.DateInput(attrs={'type': 'date'}),
+            'performed_at': forms.DateInput(attrs={'type': 'date', 'class': 'large-input'}),
         }
 
     def __init__(self, *args, **kwargs):
