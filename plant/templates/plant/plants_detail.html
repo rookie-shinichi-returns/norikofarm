@@ -28,7 +28,7 @@
     {% if request.user == plant.user %}
         <form style="display: flex; justify-content: flex-end;" action="{% url 'plant:plants_delete' plant.id %}" method="post">
             {% csrf_token %}
-            <button type="submit" class="btn-responsive" onclick='return confirm("本当に削除しますか?");'>削除</button>
+            <button type="submit" class="delete-btn" onclick='return confirm("本当に削除しますか?");'>削除</button>
         </form>
     {% endif %}
 </div>
