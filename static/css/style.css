@@ -261,22 +261,51 @@ textarea {
 }
 
 .btn-responsive {
-    /* 文字サイズ：最小１６ｐｘ（入力エラー防止）
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    /*
+    文字サイズ：最小１６ｐｘ（入力エラー防止）
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
 
-     上下余白：最小１２ｐｘ、最大１８ｐｘ 
-    padding-top: clamp(0.75rem, 0.5vw, 1.25rem);
-    padding-bottom: clamp(0.75rem, 0.6vw, 1.25rem);
+    上下余白：最小１２ｐｘ、最大１８ｐｘ 
+    padding-top: clamp(0.75rem, 0.6rem + 0.5vw, 1.25rem);
+    padding-bottom: clamp(0.75rem, 0.6rem + 0.5vw, 1.25rem);
 
-     左右余白：最小２４ｐｘ、最大４８ｐｘ（画面が）広いほど横長に 
-    padding-left: clamp(0.75rem, 0.5vw, 1.25rem);
-    padding-right: clamp(0.75rem, 0.6vw, 1.25rem);
+    左右余白：最小２４ｐｘ、最大４８ｐｘ（画面が）広いほど横長に 
+    padding-left: clamp(1.5rem, 1rem + 2.5vw, 3rem);
+    padding-right: clamp(1.5rem, 1rem + 2.5vw, 3rem);
+    
+    その他の推奨設定
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1.2;
     */
+
+    /*
     font-size: clamp(16px, 2vw + 10px, 24px);
     padding: clamp(10px, 2vh, 20px);
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
-    cursor: pointer;    
+    cursor: pointer;
+    */
+    
+    /* 最小３００px、推奨１００％（全幅）、最大５００ｐｘ  */
+    width: clamp(300px, 100%, 500px);
+    /* 中央寄せにするための設定 */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* 前述のスマホ最適サイズと組み合わせ */
+    padding: clamp(1rem, 2vh, 1.2rem);
+    font-size: clamp(1rem, 1rem + 0.5vw, 1.25rem);
+    /* 見た目の調整 */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+
+
+
 }
