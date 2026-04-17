@@ -11,7 +11,9 @@ import requests
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
-from plant.utils.line_flex import send_schedule_flex 
+from plant.utils.line_flex import send_schedule_flex
+from PIL import Image
+from PIL.ExifTags import TAGS 
 
 def index(request):
     plants = Plant.objects.all()

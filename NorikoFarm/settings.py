@@ -28,12 +28,11 @@ SECRET_KEY =  os.getenv("SECRET_KEY", None)
 DEBUG = True
 
 # ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['*', '.ngrok-free.dev']
+ALLOWED_HOSTS = ['127.0.0.1', '.ngrok-free.dev']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://blithe-fallon-unpatriarchally.ngrok-free.dev',
 ]
-
 
 # Application definition
 
@@ -48,8 +47,10 @@ INSTALLED_APPS = [
     'users',
     'django_cleanup',
     'rest_framework',
+    'debug_toolbar',
 ]
 
+INTERNAL_IPS = ['127.0.0.1']
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'NorikoFarm.urls'
@@ -111,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

@@ -143,14 +143,24 @@ header h1 {
     padding: auto;
 }
 
-.plant-info .plantUser {
+.plant-info .shooting-date {
     position: absolute;
     color: pink;
     font-weight: bold;
     font-size: clamp(1rem, 2.5vw, 1.25rem);
-    top: 2%;
-    left: 5%;
+    bottom: 3%;
+    right: 25%;
 }
+
+.plant-user {
+    position: absolute;
+    color: darkred;
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+    top: 5%;
+    left: 30%;
+}
+
+
 
 .plant-info a:hover {
     text-decoration: underline;
@@ -170,12 +180,13 @@ header h1 {
 .plant-img:hover {
     opacity: 0.8;
 }
+/* css for plants_detail.html */
 
 .detail-container {
     width: 100%;
     margin: 5%;
     padding: 5% 5% 5% 5%;
-    background-color: rgb(55, 134, 156);
+    background-color: #CCFFFF;
 }
 
 .delete-btn {
@@ -188,11 +199,10 @@ header h1 {
     border-radius: 4px;
     text-align: center;
 }
-*/
 
 #editBtn {
     background-color: green;
-    color: white; 
+    color: white;
     border: none;
     border-radius: 4px;
     text-decoration: none;

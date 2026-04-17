@@ -6,10 +6,12 @@
 <div class="detail-container">
     <div class="plant-info">
         <img src="{{ plant.image.url }}" class="plant-img">
-        <a href="{% url 'plant:users_detail' plant.user.id %}" class="plantUser">
+        <a href="{% url 'plant:users_detail' plant.user.id %}" class="plant-user">
             ユーザー {{ plant.user }}
         </a>
-        <h3>{{ plant.name }}（{{ plant.species }}） </h3><a href="{% url 'plant:plants_edit' plant.id %}" id="editBtn">編集</a>
+        <p class="shooting-date">撮影日 {{ plant.shooting_date }}</p>
+        <h3>{{ plant.name }} ({{ plant.species }}) </h3>
+        <a href="{% url 'plant:plants_edit' plant.id %}" id="editBtn">編集</a>
     </div>        
         <button id="toggleBtn" class="btn-responsive">フォームの表示／非表示</button>
         <div id="formContent">
