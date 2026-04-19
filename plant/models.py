@@ -32,9 +32,10 @@ class Plant(models.Model):
                 # 画像を開く
                 img = Image.open(self.image)
                 # getExif()でExif情報を取得
-                exif_data = img.getexif()
+                exif = img.getexif()
+                exif_data = exif.get_ifd(0x8769)
                 if exif_data:
-                    date_str = exif_data.get(306)
+                    date_str = exif_data.get(36867)
                     if date_str:
                         # Exif情報の日付型は'YYYY:MM:DD HH:MM'をdatetimeオブジェクトに変換
                         naive_dt = datetime.strptime(date_str, '%Y:%m:%d %H:%M:%S')
