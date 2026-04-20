@@ -6,7 +6,7 @@
     <h3 style="text-align: left;color: rgb(68, 205, 50);">編集</h3>
     <img src="{{ plant.image.url }}" alt="花の画像" class="plant-img">
     <div class="edit-form">
-        <form action="{% url 'plant:plants_edit' plant.pk %}" method="post">{% csrf_token %}
+        <form action="{% url 'plant:plants_edit' plant.pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}
             <p>{{ form.name.label_tag }} {{ form.name }}</p>
             <p>{{ form.species.label_tag }} {{ form.species }}</p>
             <p>{{ form.image }}</p>
