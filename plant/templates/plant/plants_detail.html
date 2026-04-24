@@ -11,7 +11,7 @@
         </a>
         <p class="shooting-date">撮影日 {{ plant.shooting_date }}</p>
         <h3>{{ plant.name }} ({{ plant.species }}) </h3>
-        <a href="{% url 'plant:plants_edit' plant.id %}" id="editBtn">編集</a>
+        <a href="{% url 'plant:plants_edit' plant.id %}" class="editBtn">編集</a>
     </div>        
         <button id="toggleBtn" class="btn-responsive">フォームの表示／非表示</button>
         <div id="formContent">
@@ -33,6 +33,9 @@
             <button type="submit" class="delete-btn" onclick='return confirm("本当に削除しますか?");'>削除</button>
         </form>
     {% endif %}
+    <div class="editBtn">
+        <a href="{% url 'plant:index' %}">元に戻る</a>
+    </div>
 </div>
 {% endblock %}
 

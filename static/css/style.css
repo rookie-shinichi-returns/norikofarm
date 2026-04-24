@@ -35,15 +35,6 @@ header {
     position: absolute;
     bottom: 15px;
     right: 20px;
-}
-
-header h1 {
-    margin: 0;
-    height: 100%;
-    line-height: 70px;
-}
-
-.header-menu {
     display: flex;
     align-items: center;
 }
@@ -55,6 +46,12 @@ header h1 {
     line-height: 1;
     padding: 5px;
     margin: 5px;
+}
+
+header h1 {
+    margin: 0;
+    height: 100%;
+    line-height: 70px;
 }
 
 .header-container {
@@ -124,9 +121,35 @@ header h1 {
 }
 
 .plant {
+    width: calc(100%/2);
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.plant-info .shooting-date {
+    position: absolute;
+    color: darkred;
+    font-weight: bold;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    bottom: 3%;
+    left: 5%;
+}
+
+@media screen and (min-width:768px) {
+    .plant {
     width: calc(100%/3);
     padding: 10px;
     margin-bottom: 15px;
+    }
+
+    .plant-info .shooting-date {
+    position: absolute;
+    color: darkred;
+    font-weight: bold;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    bottom: 3%;
+    left: 30%;
+    }
 }
 
 .plant-info {
@@ -143,24 +166,15 @@ header h1 {
     padding: auto;
 }
 
-.plant-info .shooting-date {
-    position: absolute;
-    color: pink;
-    font-weight: bold;
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
-    bottom: 3%;
-    right: 25%;
-}
+
 
 .plant-user {
     position: absolute;
     color: darkred;
     font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
-    top: 5%;
+    top: 3%;
     left: 30%;
 }
-
-
 
 .plant-info a:hover {
     text-decoration: underline;
@@ -201,9 +215,8 @@ header h1 {
 }
 
 #editBtn {
-    background-color: green;
     color: white;
-    border: none;
+    border: 1px solid green;
     border-radius: 4px;
     text-decoration: none;
     text-align: center;

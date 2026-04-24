@@ -1,5 +1,5 @@
 from django.db import models
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from datetime import timedelta
@@ -12,7 +12,7 @@ class UserProfile(models.Model):
     line_user_id = models.CharField(max_length=50, unique=True, help_text="LINE Messaging APIのUser ID")
 
 class Plant(models.Model):
-    """ 植物情報 """    
+    # 植物情報    
     user = models.ForeignKey(get_user_model(), verbose_name='投稿者', on_delete=models.PROTECT)
     name = models.CharField(max_length=100, verbose_name='名前')
     species = models.CharField(max_length=100, verbose_name='種類',blank=True, null=True) # 種類など
@@ -27,6 +27,7 @@ class Plant(models.Model):
 
     def save(self, *args, **kwargs):
         # 初回保存時または画像更新された場合にExifを取得
+    
         if self.image and not self.shooting_date:
             try:
                 # 画像を開く
@@ -46,13 +47,14 @@ class Plant(models.Model):
                 # 画像が壊れている場合やExifが取得できない場合
                 print(f"Exif取得エラー:{e}")
         
-        super().save(*args, **kwargs)
+        super().save(*args, **kwargs) 
+    
 
     def __str__(self):
         return self.name
 
 class Work(models.Model):
-    """ 植物ごとの作業内容(剪定、施肥、植付け) """    
+    # 植物ごとの作業内容(剪定、施肥、植付け)    
     WORK_TYPES = (
         ('pruning', '剪定'),
         ('fertilization','施肥'),
@@ -75,7 +77,7 @@ class Work(models.Model):
         
     @property
     def next_scheduled_date(self):        
-        """次回予定日を自動計算"""
+        # 次回予定日を自動計算
         if self.default_interval_days > 0:                  
             return self.performed_at + timedelta(days=self.default_interval_days)
         return None                                  
