@@ -5,8 +5,7 @@
             <img src="{{ plant.image.url }}" class="plant-img">
         </a>
         <div class="plant-info">
-            <a href="{% url 'plant:users_detail' plant.user.id %}" style="margin:1px;">{{ plant.name }}({{ plant.species }})</a>
-            <p style="margin:1px;">{{ plant.description }}</p>
+            <a href="{% url 'plant:users_detail' plant.user.id %}" style="margin:1px;">{{ plant.name }}</a>
         </div>
     </div>    
 {% endfor %}

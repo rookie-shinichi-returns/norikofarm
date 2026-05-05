@@ -6,10 +6,9 @@
 <div class="detail-container">
     <div class="plant-info">
         <img src="{{ plant.image.url }}" class="plant-img">
-        <a href="{% url 'plant:users_detail' plant.user.id %}" class="plant-user">
-            ユーザー {{ plant.user }}
-        </a>
+        <p class="user-credit">ユーザー {{ plant.user }}</p>
         <p class="shooting-date">撮影日 {{ plant.shooting_date }}</p>
+        </div>        
         {% if plant.species %}
             <h2>{{ plant.name }} ({{ plant.species }}) </h2>
         {% else %}
@@ -31,10 +30,11 @@
             <button class="btn-responsive" type="submit">保存</button>                
         </form>
         </div>
+    <hr>
     {% if request.user == plant.user %}
         <form style="display: flex; justify-content: flex-end;" action="{% url 'plant:plants_delete' plant.id %}" method="post">
             {% csrf_token %}
-            <button type="submit" class="delete-btn" onclick='return confirm("本当に削除しますか?");'>削除</button>
+            <button type="submit" class="btn-responsive" onclick='return confirm("本当に削除しますか?");'>削除</button>
         </form>
     {% endif %}
     <div>
