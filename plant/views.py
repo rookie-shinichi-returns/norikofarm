@@ -1,6 +1,8 @@
 from django.shortcuts import render,get_object_or_404, redirect
 from django.contrib.auth import get_user_model, authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView # CustomLoginView作成
+from django.contrib.auth.forms import AuthenticationForm # 上に同じ
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from .models import Plant
@@ -104,3 +106,15 @@ def callback(request):
                 send_schedule_flex(reply_token, user_id)
 
     return HttpResponse("OK")
+
+# CutomAuthenticationForm作成
+class CustomAuthenticationForm(LoginView):
+    template_name = "plant\\login.html"
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        # ユーザー名とパスワードの入力欄にcssクラスを追加
+        form.fields["username"].widget.attrs.update({"class": "form-control", "placeholder": "ユーザー名を入力"})
+        form.fields["password"].widget.attrs.update({"class": "form-control", "placeholder": "パスワードを入力"})
+        return form
+

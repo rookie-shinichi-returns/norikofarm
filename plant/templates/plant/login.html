@@ -1,36 +1,38 @@
 {% extends 'plant\base.html' %}
+{% load static %}
 
 {% block content %}
 
 <div class="login-container">
-    <h3 style="color:darkblue;">ログイン</h3>
-    <form method="post">
-        {% csrf_token %}    
-        {{ form.non_field_errors }}
-        {% for field in form %}
-        <p>
-            {{ field.label_tag }} {{ field }}
-            {% for error in field.errors %}
-                <p style="color: red;">{{ error }}</p>
-            {% endfor %}
-        </p>
-        {% endfor %}
-        <input type="submit" value="ログイン">
-<!--
+    <h2>アカウントログイン</h2>
     {% if form.errors %}
-        <p>ユーザー名かパスワードが誤っています！</p>
-    {% else %}
-        <h2>ログイン</h2>
-        <label>メールアドレス</label>
-        <input name="username">
-        <br>
-        <label>パスワード</label>
-        <input type="password" name="password">
-        <br>
-        <input type="submit" value="ログイン">
+        <p class="errors-msg">ユーザー名またはパスワードが誤っています</p>
     {% endif %}
--->
+    <form method="post">
+        {% csrf_token %}
+        <!-- ユーザー名入力欄 -->
+         <div class="form-group">
+            <label for="id_username">ユーザー名</label>
+            {{ form.username }}
+        </div>
+        <!-- パスワード入力欄 -->
+         <div class="form-group">
+            <label for="id_password">パスワード</label>
+            <div class="password-wrapper">
+                {{ form.password }}
+            </div>            
+        </div>
+        <!-- パスワード表示切替 -->
+         <div class="toggle-group">
+            <input type="checkbox" id="toggle-password">
+            <label for="toggle-password">パスワードを表示する</label>
+        </div>
+        <button type="submit" class="btn-submit">ログイン</button>
     </form>
 </div>
 
+{% endblock %}
+
+{% block extrajs %}
+    <script src="{% static 'js\togglepassword.js' %}"></script>
 {% endblock %}

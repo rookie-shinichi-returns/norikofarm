@@ -1,364 +1,432 @@
-* {
+/* 共通のボタンデザイン(aタグ、buttonタグ双方に適用)　*/
+.auth-btn {
+    /* ブラウザ固有のスタイルをリセット*/
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    /* レイアウトの統一 */    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; /* 枠線を含めたサイズ計算 */
+
+    width: 120px;           /* 横幅を固定 */
+    height: 40px;           /* 高さを固定(paddingの差をなくすため)  */
+    border-radius: 8px;     /* 角丸 */
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1;         /* 行高をリセット */
+    transition: opacity 0.2s;
+}
+
+/* ログインボタンの色 */
+.other-thema {
+    background-color: #007bff;
+    color: white;
+}
+
+/* ログアウトボタンの色 */
+.logout-thema {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* ホバー時の効果 */
+.auth-btn:hover {
+    opacity: 0.8;
+}
+
+/* フォーム自体の余白などをリセット（配置崩れ防止） */
+.auth-form {
+    display: inline-block;
     margin: 0;
     padding: 0;
 }
-
-body {
-    font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;
-}
-
-div {
-    box-sizing: border-box;
-}
-
-a {
-    text-decoration:none;
-    color: #000;
-}
-
-p {
-    margin: 10px;
-}
-
-/*
-input, select, textarea {
-  font-family: sans-serif;  または利用するフォント
-  font-size: 80%;         親要素の100%にする
-}
-*/
 
 header {
     height: 300px;
 }
 
-.header-menu {
-    position: absolute;
-    bottom: 15px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.header-menu a {
-    background: white;
-    font-size: 14px;
-    font-family: fantasy;
-    line-height: 1;
-    padding: 5px;
-    margin: 5px;
-}
-
-header h1 {
-    margin: 0;
-    height: 100%;
-    line-height: 70px;
-}
-
 .header-container {
     position: relative;
-    width: 100%;
-    margin: auto;
-   /* overflow: auto; */
-}
-
-.header-container p a {
-    position: absolute; /* 絶対位置 */
-    color: white;
-    top: 15px;
-    left: 15px;
-    margin: 0;
-    background: #9387eb;
-    font-size: 18px;
-    font-family: fantasy;
-    line-height: 1;
-    padding: 5px 10px;    
 }
 
 .header-container img {
+    position: absolute;
     width: 100%;
     height: 300px;
     object-fit: cover;
 }
 
+.header-container p a {
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    background-color: blueviolet;
+    font-size: 18px;
+    color: white;
+    padding: 5px;    
+}
+
 .header-container .norikofarm-line {
     position: absolute;
-    top: 15px;
-    left: 170px;
     width: 50px;
     height: 50px;
-    object-fit: contain;
+    top: 20px;
+    left: 170px;
 }
 
-.form-container {
-    width: 90%;
-    margin: 40px;
-    padding: 10px;
-    background-color: hsl(177, 70%, 80%);
+.header-menu {
+    position: absolute;
+    top: 250px;
+    right: 60px;
+    /*display: flex;
+    align-items: center;
+    background-color: white; */
 }
 
-.form-container label {
-    vertical-align: top;
-}
-
-.form-container a, button {
-    margin: 10px;
-    color: rgb(25, 0, 255);
-}
-
-.login-container, .signup-container {
-    width: 90%;
-    margin: 40px;
-    padding: 10px;
-    background-color: hsl(177, 70%, 80%);
-}
-
-.plant-container {
+.plant-list {
     display: flex;
-    flex-wrap:wrap;
-    justify-content: flex-start;    
-    width: 100%;
-    margin: auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: skyblue;
 }
 
 .plant {
-    width: calc(100%/2);
-    padding: 15px;
-    margin-bottom: 15px;
-}
-
-.plant-info .shooting-date {
-    position: absolute;
-    color: darkred;
-    font-weight: bold;
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
-    bottom: 3%;
-    left: 5%;
-}
-
-@media screen and (min-width:768px) {
-    .plant {
-    width: calc(100%/3);
-    padding: 10px;
-    margin-bottom: 15px;
-    }
-
-    .plant-info .shooting-date {
-    position: absolute;
-    color: darkred;
-    font-weight: bold;
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
-    bottom: 3%;
-    left: 30%;
-    }
-}
-
-.plant-info {
-    margin: 5px;
-    font-weight: bold;
-    color:chocolate;
-    position: relative;
-    text-align:center;
-}
-
-.plant-info img {
-    display: block;
-    margin: auto;
-    padding: auto;
-}
-
-.detail-container h2 {
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
+.plant img {
+    display: block;
+    width: 90%;
+    margin: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
 
+.plant-detail {
+    background-color: skyblue;
+}
+
+.plant-detail .plant-info {
+    position: relative;
+    width: 80%;
+    margin: 20px auto 0;
+    text-align: center;
+}
+
+.plant-detail img {
+    width: 85%;
+    height: auto;
+    margin: 20px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.shooting-date {
+    position: absolute;
+    top: 7%;
+    left: 15%;
+    font-size: clamp(0.75rem, 0.477rem + 1.36vw, 1.5rem);
+    font-weight: bold;    
+    color: white;    
+}
 
 .user-credit {
     position: absolute;
-    color: darkred;
-    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
-    top: 3%;
-    left: 30%;
+    bottom: 10%;
+    left: 15%;
+    font-size: clamp(0.75rem, 0.477rem + 1.36vw, 1.5rem);
+    font-weight: bold;    
+    color: white;    
 }
 
-.plant-info a:hover {
-    text-decoration: underline;
+h2 {
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.plant-info h2 {
-    display: inline-block;
-}
-
-.plant-img {
-    width: 100%;
-    max-width: 500px;
-    object-fit: cover;
-    border-radius: 4px;
-}
-
-.plant-img:hover {
-    opacity: 0.8;
-}
-/* css for plants_detail.html */
-
-.detail-container {
-    width: 100%;
-    margin: 5%;
-    padding: 5% 5% 5% 5%;
-    background-color: #CCFFFF;
-}
-
-.delete-btn {
-    width: clamp(250px, 90%, 450px);
+.back-btn {
     display: block;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 15px;        
-    background-color: red;
+    width: 100px;
+    margin: 10px 0 10px auto;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
     color: white;
-    border: none;
-    border-radius: 4px;
-    text-align: center;
+    text-align: center; 
 }
 
-hr{
+.edit-btn {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    padding: 10px;
     border: none;
-    border-bottom: 1px solid #333;
-    margin: 0;
-}
-
-.editBtn {
+    border-radius: 8px;
     background-color: green;
     color: white;
-    border: 1px solid green;
-    border-radius: 4px;
-    text-decoration: none;
-    text-align: center;
-    width: 50px;
-    padding: 3px;
+    text-align: center; 
 }
 
-.users-container {
+.btn-division {
     width: 90%;
-    margin: 30px;
-    padding: 20px;
-    background-color: darkgray;
+}
+/*   
+.signup-container form {
+    width: 80%;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: #ffffff;  
 }
 
-.edit-container label {
-    vertical-align: top;
+.login-container {
+    width: 80%;
+    height: auto;
+    margin: 10px auto 10px auto;
+    background-color: skyblue;
+}
+
+.login-container h3 {
+    display: inline-block;
+    margin: 10px;
+    color: darkblue;
+}
+.login-container .login-form {
+    width: 100%;    
+}
+*/
+
+/* .main {
+    background-color: skyblue;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: black;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.login-container p {
+    color: red;
+}
+
+.form-group {
+    margin: 0 auto 15px;
+}
+
+.form-group label {
+    font-size: 14px;
+}
+
+input {
+    width: 90%;
+    margin: 5px 0 10px 0; 
+    padding: 10px 15px;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input::placeholder {
+    font-size: 14px;
+    font-weight: lighter;
+    font-style: italic;
+}
+
+input:focus {
+    background-color: #e6f7ff;
+    border: 2px solid #1890ff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(24, 144, 255, 0.5); 
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;  
+}
+
+button:hover {
+    background-color: darkblue;
+}
+*/
+
+/* ログインカードの枠 */
+.login-container, .signup-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 柔らかい影 */
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+/* タイトル */
+.login-container h2, .signup-container h2 {
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: #1e293b; /* 深いネイビーグレー */
+    font-size: 22px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* フォームの行間 */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* ラベルのスタイル */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #475569;
+    font-size: 14px;
+}
+
+/* 入力フィールドの標準化 */
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #334155;
+    background-color: #f8fafc;
+    transition: border-color 0.2s, background-color 0.2s;
+    box-sizing: border-box;
+}
+
+/* 入力欄にフォーカスした時 */
+.form-control:focus {
+    border-color: #6366f1; /* 落ち着いたパープルブルー */
+    background-color: #ffffff;
+    outline: none;
+}
+
+/* パスワード表示切り替えエリア */
+.toggle-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.toggle-group input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.toggle-group label {
+    color: #64748b;
+    font-size: 13px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* ログインボタン */
+.btn-submit {
+    width: 100%;
+    padding: 13px;
+    background-color: #1e293b; /* 信頼感のあるダークネイビー */
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* ボタンホバー時 */
+.btn-submit:hover {
+    background-color: #0f172a;
+}
+
+/* エラーメッセージ */
+.error-msg {
+    color: #ef4444;
+    background-color: #fef2f2;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    border: 1px solid #fee2e2;
 }
 
 .edit-container {
+    width: 100%;
+    background-color: skyblue;
+}
+
+.edit-container img {
+    display: block;
     width: 80%;
-    margin-top: 20px;
-    margin-left: 50px; 
-    padding: 20px;
-    background-color: rgb(240, 241, 255);    
+    margin: 20px auto 20px;
+    align-items: center;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .edit-form {
-    display: inline-block;
-    vertical-align: top;
+    max-width: 400px;
+    margin: 20px auto;
 }
 
 .edit-form p {
-    padding-top: 10px;    
-}
-
-.detail-container .plant-img:hover {
-    opacity: 0.8;
-    border-radius: 4px;
-}
-
-.detail-container label {
-    vertical-align: top;
-}
-
-@media (max-width: 768px) {
-    .detail-container .setting {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }       
-}
-
-.setting input, .setting textarea {
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 200px;
-    margin: 5px;
-    border: 1 solid #000;
-}
-
-textarea {
-  width: 100%;       /* 幅を親要素に合わせる */
-  max-width: 100%;   /* 画面からはみ出さないようにする */
-  box-sizing: border-box; /* パディング・ボーダーを含めて幅計算 */
-  height: 100px;     /* 初期高さを指定 */
-  resize: vertical;  /* ユーザーが高さのみ変更可能にする */
-}
-
-#formContent {
-    display: none;
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-
-#toggleBtn {
-    background-color: rgb(135, 233, 122);
-    color:black;
-    border-color: rgb(135, 233, 122);
-    padding: 3px;
+    margin-bottom: 8px;
+    color: #475569;
+    font-size: 14px;
 }
 
 .btn-responsive {
-    /*
-    文字サイズ：最小１６ｐｘ（入力エラー防止）
-    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
-
-    上下余白：最小１２ｐｘ、最大１８ｐｘ 
-    padding-top: clamp(0.75rem, 0.6rem + 0.5vw, 1.25rem);
-    padding-bottom: clamp(0.75rem, 0.6rem + 0.5vw, 1.25rem);
-
-    左右余白：最小２４ｐｘ、最大４８ｐｘ（画面が）広いほど横長に 
-    padding-left: clamp(1.5rem, 1rem + 2.5vw, 3rem);
-    padding-right: clamp(1.5rem, 1rem + 2.5vw, 3rem);
-    
-    その他の推奨設定
-    display: inline-block;
-    text-decoration: none;
-    border-radius: 4px;
-    line-height: 1.2;
-    */
-
-    /*
-    font-size: clamp(16px, 2vw + 10px, 24px);
-    padding: clamp(10px, 2vh, 20px);
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    */
-    
-    /* 最小３００px、推奨１００％（全幅）、最大５００ｐｘ  */
-    width: clamp(300px, 100%, 500px);
-    /* 中央寄せにするための設定 */
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    /* 前述のスマホ最適サイズと組み合わせ */
-    padding: clamp(1rem, 2vh, 1.2rem);
-    font-size: clamp(1rem, 1rem + 0.5vw, 1.25rem);
-    /* 見た目の調整 */
-    background-color: #007bff;
-    color: #fff;
+    width: 90%;
+    margin: 10px auto;
+    padding: 13px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: green;
+    color: #ffffff;
     border: none;
-    border-radius: 8px;
-    text-align: center;
+    border-radius: 6px;
+    transition: background-color 0.2s;    
 }
 
-.large-input {
-    width: 90px;
-    height: 25px;
+.btn-responsive:hover {
+    background-color: #0f172a;
 }
+
+
+
+

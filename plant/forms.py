@@ -10,6 +10,11 @@ class CustomUserCreationForm(UserCreationForm):
         model = get_user_model()
         fields = ('email',)
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            existing_classes = field.widget.attrs.get('class', '')
+            field.widget.attrs['class'] = f"{existing_classes} form-control".strip()
 class PlantForm(ModelForm):
     class Meta:
         model = Plant
@@ -19,6 +24,13 @@ class PlantForm(ModelForm):
             'species': _('種類'),
             'description': _('特徴'),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            # 既存のクラス設定を保持しつつform-controlを追加
+            existing_classes = field.widget.attrs.get('class', '')
+            field.widget.attrs['class'] = f'{existing_classes} form-control'.strip() 
 
 class PlantWork(ModelForm):
     class Meta:
@@ -31,8 +43,3 @@ class PlantWork(ModelForm):
             'notes': forms.Textarea(attrs={'rows': 0, 'cols': 30}) ,
             'performed_at': forms.DateInput(attrs={'type': 'date', 'class': 'large-input'}),
         }
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['work_type'].empty_label = '入力してください'
-

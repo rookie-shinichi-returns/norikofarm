@@ -15,7 +15,7 @@ urlpatterns = [
     path('plants/<int:pk>/', views.plants_detail, name='plants_detail'),
     path('users/<int:pk>/', views.users_detail, name='users_detail'),
     path('signup/', views.signup, name='signup'),
-    path('login/', auth_views.LoginView.as_view(template_name='plant\login.html'), name='login'),
+    path('login/', views.CustomAuthenticationForm.as_view(), name='login'), # CustomAuthenticationFormを使用
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('callback/', views.callback),
 ]
