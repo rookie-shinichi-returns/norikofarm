@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<div class="form-container">
-    <a href="{% url 'plant:index' %}">ホームに戻る</a>
-    <form action="{% url 'plant:plants_new' %}" method="post" enctype="multipart/form-data">
+<div class="newform-container">
+    <a href="{% url 'plant:index' %}">戻る</a>
+    <form action="{% url 'plant:plants_new' %}" method="post" enctype="multipart/form-data" class="form-control">
         {% csrf_token %}
         {{ form.non_field_errors }}
         {% for field in form %}

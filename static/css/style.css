@@ -9,17 +9,15 @@
     cursor: pointer;
 
     /* レイアウトの統一 */    
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     box-sizing: border-box; /* 枠線を含めたサイズ計算 */
-
-    width: 120px;           /* 横幅を固定 */
-    height: 40px;           /* 高さを固定(paddingの差をなくすため)  */
-    border-radius: 8px;     /* 角丸 */
-    font-size: 16px;
+    width: 90px;           /* 横幅を固定 */
+    height: 30px;
+    margin-left: 5px;
+    text-align: center;
+    border-radius: 4px;     /* 角丸 */
+    font-size: 14px;
     font-weight: bold;
-    line-height: 1;         /* 行高をリセット */
+    line-height: 2;         /* 行高をリセット */
     transition: opacity 0.2s;
 }
 
@@ -53,6 +51,7 @@ header {
 
 .header-container {
     position: relative;
+    text-align: left;
 }
 
 .header-container img {
@@ -81,9 +80,12 @@ header {
 }
 
 .header-menu {
+    display: flex;
+    align-items: center;
+    justify-content: fex-end;
     position: absolute;
     top: 250px;
-    right: 60px;
+    right: 10px;
     /*display: flex;
     align-items: center;
     background-color: white; */
@@ -101,6 +103,12 @@ header {
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
+}
+
+.plant a {
+    display: block;
+    font-size: clamp(0.875rem, 0.591rem + 1.42vw, 1.5rem);
+    margin-top: 10px;
 }
 
 .plant img {
@@ -318,10 +326,12 @@ button:hover {
 /* 入力フィールドの標準化 */
 .form-control {
     width: 100%;
+    max-width:fit-content;
+    margin: auto;
     padding: 12px;
     border: 1px solid #cbd5e1;
     border-radius: 6px;
-    font-size: 15px;
+    font-size: clamp(0.75rem, 0.477rem + 1.36vw, 1.5rem);
     color: #334155;
     background-color: #f8fafc;
     transition: border-color 0.2s, background-color 0.2s;
@@ -392,14 +402,15 @@ button:hover {
 .edit-container img {
     display: block;
     width: 80%;
-    margin: 20px auto 20px;
+    margin-left:auto;
+    margin-right: auto;
     align-items: center;
     object-fit: cover;
     border-radius: 8px;
 }
 
 .edit-form {
-    max-width: 400px;
+    width: 90%;
     margin: 20px auto;
 }
 
@@ -412,7 +423,8 @@ button:hover {
 .btn-responsive {
     display: block;
     width: 90%;
-    margin: 10px auto;
+    max-width: 400px;
+    margin: 10px;
     padding: 13px;
     font-size: 16px;
     font-weight: bold;
@@ -425,6 +437,31 @@ button:hover {
 
 .btn-responsive:hover {
     background-color: #0f172a;
+}
+/*
+.btn-delete {
+    display: block;
+    width: 40px;
+}
+*/
+.newform-container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.newform-container a {
+    display: block;
+    background-color: #007bff;
+    margin-bottom: 20px;
+    padding: 5px;
+    width: 40px;
+    font-size: 14px;
+    color: white;
+    text-align: center; 
+    border: none;
+    border-radius: 4px;   
 }
 
 
