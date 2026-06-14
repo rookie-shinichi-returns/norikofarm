@@ -39,7 +39,7 @@ class PlantWork(ModelForm):
         widgets = {
             'work_type': forms.Select(attrs={'class': 'large-input'}),
             # 'work_type': forms.Select(attrs={'value': '選択してください'}),
-            'default_interval_days': forms.NumberInput(attrs={'class': 'large-input'}),
-            'notes': forms.Textarea(attrs={'rows': 0, 'cols': 30}) ,
+            'default_interval_days': forms.NumberInput(),
+            'notes': forms.Textarea(attrs={'rows': 10, 'cols': 30}) ,
             'performed_at': forms.DateInput(attrs={'type': 'date', 'class': 'large-input'}),
         }

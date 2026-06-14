@@ -175,11 +175,11 @@ h2 {
 
 .edit-btn {
     display: block;
-    width: 80%;
-    margin: 20px auto;
+    width: 70%;
+    margin: 20px 0 20px 10px;    
     padding: 10px;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: green;
     color: white;
     text-align: center; 
@@ -420,9 +420,42 @@ button:hover {
     font-size: 14px;
 }
 
+#formContent {
+    width: clamp(250px, 50vw, 500px);
+    margin: 5px auto 10px auto;
+    padding: 10px;
+    border: 0.5px solid black;
+    border-radius: 4px;
+}
+
+#formContent :is(label,input,textarea) {
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 10px;
+}
+
+input[type="number"] {
+    width: 50px;
+}
+
+.btn-save {
+    display: block;
+    width: 30%;
+    max-width: 100px;
+    margin: 10px 0 0 auto;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: green;
+    color: #ffffff;
+    border: none;
+    border-radius: 2px;
+    transition: background-color 0.2s;    
+}
+
 .btn-responsive {
     display: block;
-    width: 90%;
+    width: 70%;
     max-width: 400px;
     margin: 10px;
     padding: 13px;
@@ -438,12 +471,19 @@ button:hover {
 .btn-responsive:hover {
     background-color: #0f172a;
 }
-/*
+
 .btn-delete {
     display: block;
-    width: 40px;
+    width: 15vw;
+    margin: 0 10px 0 0;
+    padding: 8px;    
+    border: none;
+    border-radius: 4px;
+    background-color:red;
+    color: black;
+    font-weight: bold;
 }
-*/
+
 .newform-container {
     width: 80%;
     margin-left: auto;
@@ -462,6 +502,28 @@ button:hover {
     text-align: center; 
     border: none;
     border-radius: 4px;   
+}
+
+.btn-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.btn-toggle {    
+    width: 40%;
+    max-width: 200px;
+    margin: 20px 0 5px 15%;
+    padding: 4px;
+    font-size: 14px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 4px;    
+}
+
+.btn-save:hover {
+    background-color: #0f172a;
 }
 
 

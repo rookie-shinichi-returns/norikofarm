@@ -13,13 +13,12 @@
         {% else %}
             <h2>{{ plant.name }}</h2>
         {% endif %} 
-    </div>
-           
-    <a href="{% url 'plant:plants_edit' plant.id %}" class="edit-btn">編集</a>
-    <!-- Javascriptの変数名(toggleBtn,formContent) 変更注意         
-        <button id="toggleBtn">フォームの表示／非表示</button>
-        <div id="formContent">
-        <form action="{% url 'plant:plants_detail' plant.id %}" method="post">{% csrf_token %}
+    </div>        
+    <!-- Javascriptの変数名(toggleBtn,formContent) 変更注意 -->        
+    <button id="toggleBtn" class="btn-toggle">作業フォーム</button>
+    <div id="formContent">
+        <form action="{% url 'plant:plants_detail' plant.id %}" method="post">
+            {% csrf_token %}
             {% for field in form %}
             <p>
                 {{ field.label_tag }} {{ field }}
@@ -28,17 +27,19 @@
                 {% endfor %}
             </p>
             {% endfor %}
-            <button class="btn-responsive" type="submit">保存</button>                
+            <button class="btn-save" type="submit">保存</button>                
         </form>
     </div>
-    -->
-    <hr>
-    {% if request.user == plant.user %}
+    <div class="btn-menu">
+        <a href="{% url 'plant:plants_edit' plant.id %}" class="edit-btn">編集</a>    
+        {% if request.user == plant.user %}
         <form action="{% url 'plant:plants_delete' plant.id %}" method="post">
             {% csrf_token %}
             <button type="submit" class="btn-delete" onclick='return confirm("本当に削除しますか?");'>削除</button>
         </form>
-    {% endif %}
+        {% endif %}
+    </div>
+    <hr>
     <div class="btn-division">
         <a href="{% url 'plant:index' %}" class="back-btn">元に戻る</a>
     </div>
