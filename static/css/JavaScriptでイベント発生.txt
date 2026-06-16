@@ -1,0 +1,64 @@
+Djangoプログラムで示してDjangoで実装する場合の構成コードを提示します。Djangoでは、URLパターン（urls.py）、ビュー（views.py）、そしてテンプレート（HTMLファイル）を連携させてページ遷移とJavaScriptの実行を行います。🏛️ システムの構成Djangoアプリ（例: myapp）の中に、以下の4つのファイルを配置・編集します。views.py (ページを表示するロジック)urls.py (ルーティング設定)index.html (最初のページ)next.html (開かれるページ：開いた瞬間にイベント発生)💻 1. ビューの作成 (views.py)それぞれのHTMLファイルをレンダリングして返す関数を定義します。pythonfrom django.shortcuts import render
+
+# 最初のページを表示するビュー
+def index_view(request):
+    return render(request, 'index.html')
+
+# 遷移先のページを表示するビュー
+def next_view(request):
+    return render(request, 'next.html')
+コードは注意してご使用ください。🗺️ 2. URLパターンの設定 (urls.py)ブラウザからのリクエストとビューを紐付けます。pythonfrom django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index_view, name='index'),       # http://127.0.0
+    path('next/', views.next_view, name='next'),    # http://127.0.0next/
+]
+コードは注意してご使用ください。🌐 3. 最初のページ (templates/index.html)Djangoのテンプレートタグ {% url 'next' %} を使って、遷移先のURLを安全かつ動的に指定します。html<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>最初のページ</title>
+</head>
+<body>
+    <h1>最初のページ (index.html)</h1>
+    <!-- ボタンにクリックイベントを設定 -->
+    <button id="openBtn">Djangoで次のページを開く</button>
+
+    <script>
+        document.getElementById('openBtn').addEventListener('click', () => {
+            // DjangoのURLパターン名 'next' からURLを動的に取得して遷移
+            window.location.href = "{% url 'next' %}";
+            
+            // 別タブで開きたい場合はこちらを使用
+            // window.open("{% url 'next' %}", '_blank');
+        });
+    </script>
+</body>
+</html>
+コードは注意してご使用ください。🚀 4. 遷移先ページ (templates/next.html)ページが読み込まれた瞬間に DOMContentLoaded イベントが発火し、自動的に処理が実行されます。html<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>遷移先のページ</title>
+</head>
+<body>
+    <h1>別のHTMLファイル (next.html)</h1>
+    <p id="status-message">読み込み中...</p>
+
+    <script>
+        // ページが読み込まれた瞬間にイベントを自動発生させる
+        window.addEventListener('DOMContentLoaded', () => {
+            // 例：アラートを表示する
+            alert('Django経由で新しいページが開かれました！');
+            
+            // 例：DOM操作でテキストを書き換える
+            const msg = document.getElementById('status-message');
+            msg.innerText = 'Djangoページ起動と同時にイベントが正常に実行されました。';
+            msg.style.color = 'blue';
+            msg.style.fontWeight = 'bold';
+        });
+    </script>
+</body>
+</html>
+コードは注意してご使用ください。🛠️ 動作確認の手順ターミナルで python manage.py runserver を実行してDjangoサーバーを起動します。ブラウザで http://127.0.0 にアクセスします。ボタンをクリックすると、Djangoのルーティング（/next/）に沿ってページが切り替わり、同時にJavaScriptのイベントが実行されます。もし「開くと同時にDjango側（Python側）のデータベースにデータを保存したい」や「特定のデータ（IDなど）を次のページに渡してイベントを起こしたい」などの要望があれば、その実装方法（ContextやAjax、Fetch APIの活用など）も解説できます。必要であれば教えてください。

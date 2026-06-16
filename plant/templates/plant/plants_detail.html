@@ -15,8 +15,8 @@
         {% endif %} 
     </div>        
     <!-- Javascriptの変数名(toggleBtn,formContent) 変更注意 -->        
-    <button id="toggleBtn" class="btn-toggle">作業フォーム</button>
-    <div id="formContent">
+    <button id="toggleBtn" class="btn-toggle">作業フォームを開く</button>
+    <div id="formContent" style="display: none;">  <!-- JavaScriptでのif文判断のためインラインスタイルで'none'を指定 -->
         <form action="{% url 'plant:plants_detail' plant.id %}" method="post">
             {% csrf_token %}
             {% for field in form %}
