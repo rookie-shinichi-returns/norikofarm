@@ -5,7 +5,7 @@ from django.conf import settings
 from plant.models import Work, UserProfile
 
 
-def send_schedule_flex(reply_token, line_user_id):
+def send_schedule_flex(reply_token, line_user_id, period):
     try:
         profile = UserProfile.objects.get(line_user_id=line_user_id)
         user = profile.user
@@ -13,7 +13,7 @@ def send_schedule_flex(reply_token, line_user_id):
         return
 
     today = timezone.now().date()
-    target_date = today + timedelta(days=5)
+    target_date = today + timedelta(days=period)
 
     works = Work.objects.filter(
         plant__user=user

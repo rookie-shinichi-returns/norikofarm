@@ -27,7 +27,6 @@ SECRET_KEY =  os.getenv("SECRET_KEY", None)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = ['127.0.0.1', '.ngrok-free.dev']
 
 CSRF_TRUSTED_ORIGINS = [
@@ -154,4 +153,4 @@ load_dotenv(dotenv_path)
 LINE_CHANNEL_ACCESS_TOKEN = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
 LINE_CHANNEL_SECRET = os.getenv("LINE_CHANNEL_SECRET", None)
 LINE_USER_ID = os.getenv("LINE_USER_ID", None)
-BASE_URL = "https://blithe-fallon-unpatriarchally.ngrok-free.dev" # 画像ファイルを送信するためのngrokのドメイン 
+BASE_URL = "https://blithe-fallon-unpatriarchally.ngrok-free.dev" # 画像ファイルを送信するためのngrokのドメイン

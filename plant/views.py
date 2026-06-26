@@ -105,6 +105,7 @@ def verify_signature(request):
     return hmac.compare_digest(signature, expected_signature)
 
 from django.http import HttpResponse, HttpResponseForbidden
+import re
 
 @csrf_exempt
 def callback(request):
@@ -122,10 +123,14 @@ def callback(request):
             if ':' in text and '完了' in text:
                 work_id = text.split(':')[0]
                 Work.objects.filter(id=work_id).update(performed_at=timezone.now())
-
-            if text == "予定":
-                send_schedule_flex(reply_token, user_id)
-
+            elif "予定" in text:
+                numbers = re.findall(r"\d+", text)
+                if numbers:
+                    period = int(numbers[0])
+                    send_schedule_flex(reply_token, user_id, period)
+                else:
+                    print("数字が見つかりませんでした")
+                
     return HttpResponse("OK")
 
 # CutomAuthenticationForm作成
