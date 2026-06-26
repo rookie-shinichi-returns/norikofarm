@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'users',
     'django_cleanup',
     'rest_framework',
-    'debug_toolbar',
+    #'debug_toolbar',
 ]
 
 INTERNAL_IPS = ['127.0.0.1']
@@ -62,7 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'NorikoFarm.urls'
@@ -152,5 +152,6 @@ dotenv_path = BASE_DIR / '.env'
 load_dotenv(dotenv_path)
 
 LINE_CHANNEL_ACCESS_TOKEN = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
+LINE_CHANNEL_SECRET = os.getenv("LINE_CHANNEL_SECRET", None)
 LINE_USER_ID = os.getenv("LINE_USER_ID", None)
 BASE_URL = "https://blithe-fallon-unpatriarchally.ngrok-free.dev" # 画像ファイルを送信するためのngrokのドメイン 

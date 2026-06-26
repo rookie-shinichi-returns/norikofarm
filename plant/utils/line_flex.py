@@ -13,7 +13,7 @@ def send_schedule_flex(reply_token, line_user_id):
         return
 
     today = timezone.now().date()
-    target_date = today + timedelta(days=7)
+    target_date = today + timedelta(days=5)
 
     works = Work.objects.filter(
         plant__user=user
@@ -25,7 +25,6 @@ def send_schedule_flex(reply_token, line_user_id):
         if next_date and today <= next_date <= target_date:
             upcoming.append((w, next_date))
 
-    # upcoming = sorted(upcoming, key=lambda x: x[1])[:5]
     upcoming = sorted(upcoming, key=lambda x: x[1])[:5]
 
     if not upcoming:
@@ -153,3 +152,4 @@ def send_text(reply_token, text):
         headers=headers,
         json=data
     )
+

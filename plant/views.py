@@ -5,17 +5,17 @@ from django.contrib.auth.views import LoginView # CustomLoginView作成
 from django.contrib.auth.forms import AuthenticationForm # 上に同じ
 from django.views.decorators.http import require_POST
 from django.contrib import messages
-from .models import Plant
+from .models import Plant, Work
 from .forms import CustomUserCreationForm
 from .forms import PlantForm, PlantWork
 import json
-import requests
-from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
+from django.utils import timezone 
 from plant.utils.line_flex import send_schedule_flex
+
 from PIL import Image
-from PIL.ExifTags import TAGS 
+from PIL.ExifTags import TAGS
 
 def index(request):
     plants = Plant.objects.all()
@@ -83,11 +83,34 @@ def signup(request):
                 return redirect('plant:index')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'plant\\signup.html', {'form': form}) 
+    return render(request, 'plant\\signup.html', {'form': form})
 
+import hmac
+import hashlib
+import base64
+
+def verify_signature(request):
+    signature = request.headers.get("X-Line-Signature")
+    if not signature:
+        return False
+    
+    body = request.body
+    hash = hmac.new(
+        settings.LINE_CHANNEL_SECRET.encode("utf-8"),
+        body,
+        hashlib.sha256
+    ).digest()
+
+    expected_signature = base64.b64encode(hash).decode()
+    return hmac.compare_digest(signature, expected_signature)
+
+from django.http import HttpResponse, HttpResponseForbidden
 
 @csrf_exempt
 def callback(request):
+    if not verify_signature(request):
+        return HttpResponseForbidden("Invalid signature")
+    
     body = json.loads(request.body.decode("utf-8"))
 
     for event in body.get("events", []):
@@ -98,11 +121,9 @@ def callback(request):
 
             if ':' in text and '完了' in text:
                 work_id = text.split(':')[0]
-                from plant.models import Work
-                from django.utils import timezone 
                 Work.objects.filter(id=work_id).update(performed_at=timezone.now())
 
-            if text == "確認":
+            if text == "予定":
                 send_schedule_flex(reply_token, user_id)
 
     return HttpResponse("OK")
@@ -117,4 +138,3 @@ class CustomAuthenticationForm(LoginView):
         form.fields["username"].widget.attrs.update({"class": "form-control", "placeholder": "ユーザー名を入力"})
         form.fields["password"].widget.attrs.update({"class": "form-control", "placeholder": "パスワードを入力"})
         return form
-
